@@ -13,7 +13,7 @@ List<User> parseUser(String responseBody) {
 
 Future<List<User>> fetchData() async {
   final response = await http.get(
-      'https://api.github.com/repos/IterRoboticsClub/app_for_the_club/contributors');
+      'https://api.github.com/repos/IterRoboticsClub/app_for_club/contributors');
 
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,
