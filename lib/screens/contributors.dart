@@ -3,7 +3,9 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
+import 'package:url_launcher/url_launcher.dart';
 
 List<User> parseUser(String responseBody) {
   final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
@@ -36,7 +38,7 @@ class User {
 
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
-      userId: json['userId'] as String,
+      userId: json['login'] as String,
       profileAvatar: json['avatar_url'] as String,
       gitUrl: json['html_url'] as String,
       contributions: json['contributions'] as int,
@@ -59,8 +61,13 @@ class _ContributorsState extends State<Contributors> {
     return Container(
       child: Scaffold(
         appBar: AppBar(
-          title: Text('CONTRIBUTORS'),
+          title: Text(
+            'CONTRIBUTORS',
+            style: GoogleFonts.metalMania(),
+          ),
+          backgroundColor: Colors.black,
         ),
+        backgroundColor: Colors.white24,
         body: FutureBuilder<List<User>>(
           future: fetchData(),
           builder: (context, snapshot) {
@@ -90,8 +97,37 @@ class UserList extends StatelessWidget {
           SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
       itemCount: users.length,
       itemBuilder: (context, index) {
-        return Image.network(users[index].profileAvatar);
+        return Column(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: CircleAvatar(
+                backgroundImage: NetworkImage(users[index].profileAvatar),
+                minRadius: 60,
+                maxRadius: 60,
+              ),
+            ),
+            FlatButton(
+              child: Text(
+                users[index].userId,
+                style: GoogleFonts.breeSerif(
+                  fontSize: 26,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              onPressed: () => launchURL(users[index].gitUrl),
+            ),
+          ],
+        );
       },
     );
+  }
+
+  launchURL(String gitUrl) async {
+    if (await canLaunch(gitUrl)) {
+      await launch(gitUrl);
+    } else {
+      throw "Could not launch $gitUrl";
+    }
   }
 }

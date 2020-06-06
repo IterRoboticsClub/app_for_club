@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:appforclub/screens/contributors.dart';
+import 'package:appforclub/screens/about_us.dart';
 import 'package:appforclub/screens/intro.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -30,7 +30,7 @@ class LaunchState extends State<Launch> {
       //Check if logged in , if not go to login.dart
       //otherwise
       Navigator.of(context).pushReplacement(
-          new MaterialPageRoute(builder: (context) => new Contributors()));
+          new MaterialPageRoute(builder: (context) => new AboutUs()));
     } else {
       await prefs.setBool('seen', true);
       Navigator.of(context).pushReplacement(
