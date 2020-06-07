@@ -18,7 +18,7 @@ class Home extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text("This is the Home Page"),
-              _logout(),
+              _logout(context),
               
             ],
           ),
@@ -26,10 +26,11 @@ class Home extends StatelessWidget {
       ),
     );
   }
-  Widget _logout(){
-    return  RaisedButton(onPressed: (){
-       Navigator.push(context,MaterialPageRoute(builder:(context)=>LoginPage()),);
-    });
-  }
+    Widget _logout(BuildContext context){
+      return  RaisedButton(onPressed: (){
+        Navigator.push(context,MaterialPageRoute(builder:(context)=>LoginPage()),);
+      },color:Colors.blue,
+          child: Text('Logout'));
+    }
   
 }
