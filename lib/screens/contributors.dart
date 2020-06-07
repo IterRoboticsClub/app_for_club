@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:appforclub/widgets/appBar.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -60,14 +61,8 @@ class _ContributorsState extends State<Contributors> {
   Widget build(BuildContext context) {
     return Container(
       child: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            'CONTRIBUTORS',
-            style: GoogleFonts.metalMania(),
-          ),
-          backgroundColor: Colors.black,
-        ),
-        backgroundColor: Colors.white24,
+        appBar: appBarhead('CONTRIBUTORS'),
+        // backgroundColor: Colors.white24,
         body: FutureBuilder<List<User>>(
           future: fetchData(),
           builder: (context, snapshot) {
