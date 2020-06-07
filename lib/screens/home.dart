@@ -11,6 +11,7 @@ class Home extends StatelessWidget {
       body: new Center(
         child: new Text('This is the home page'),
       ),
+      
     );
   }
 }

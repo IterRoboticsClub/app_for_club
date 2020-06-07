@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'sign_in.dart';
 import  'package:appforclub/screens/home.dart';
+import 'package:appforclub/screens/about_us.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -21,6 +22,7 @@ class _LoginPageState extends State<LoginPage> {
               FlutterLogo(size: 150),
               SizedBox(height: 50),
               _signInButton(),
+             _skipText(),
             ],
           ),
         ),
@@ -66,5 +68,15 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
+  }
+
+  Widget _skipText(){
+    return RaisedButton(
+          onPressed: () {
+            // Navigate back to first route when tapped.
+            Navigator.push(context,MaterialPageRoute(builder:(context)=>AboutUs()),);
+          },
+          color:Colors.blue,
+          child: Text('skip login'))
   }
 }
