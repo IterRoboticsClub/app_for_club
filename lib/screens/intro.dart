@@ -12,44 +12,41 @@ class _IntroScreenState extends State<IntroScreen> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      body: new Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Spacer(
-              flex: 2,
-            ),
-            Center(
-              child: Container(
-                width: 200,
-                height: 200,
-                child: FlareActor(
-                  "assets/rotating_gear_irc.flr",
-                  alignment: Alignment.center,
-                  fit: BoxFit.fill,
-                  animation: "rotate_gear",
-                ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Spacer(
+            flex: 2,
+          ),
+          Center(
+            child: Container(
+              width: 200,
+              height: 200,
+              child: FlareActor(
+                "assets/rotating_gear_irc.flr",
+                alignment: Alignment.center,
+                animation: "rotate_gear",
               ),
             ),
-            Spacer(
-              flex: 2,
-            ),
-            TypewriterAnimatedTextKit(
-              text: ["We Learn,We Build,We Share"],
-              textStyle: TextStyle(
-                  fontFamily: "BreeSerif",
-                  fontSize: 24.0,
-                  color: CupertinoColors.systemGrey),
-              textAlign: TextAlign.start,
-              alignment: AlignmentDirectional.topStart,
-              isRepeatingAnimation: false,
-              speed: Duration(milliseconds: 300),
-            ),
-            Spacer(
-              flex: 1,
-            )
-          ],
-        ),
+          ),
+          Spacer(
+            flex: 2,
+          ),
+          TypewriterAnimatedTextKit(
+            text: ["We Learn,We Build,We Share"],
+            textStyle: TextStyle(
+                fontFamily: "BreeSerif",
+                fontSize: 24.0,
+                color: CupertinoColors.systemGrey),
+            textAlign: TextAlign.start,
+            alignment: AlignmentDirectional.topStart,
+            isRepeatingAnimation: false,
+            speed: Duration(milliseconds: 300),
+          ),
+          Spacer(
+            flex: 1,
+          )
+        ],
       ),
     );
   }
