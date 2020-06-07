@@ -77,6 +77,6 @@ class _LoginPageState extends State<LoginPage> {
             Navigator.push(context,MaterialPageRoute(builder:(context)=>AboutUs()),);
           },
           color:Colors.blue,
-          child: Text('skip login'))
+          child: Text('skip login'));
   }
 }

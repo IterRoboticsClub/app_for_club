@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'sign_in.dart';
+import  'package:appforclub/screens/Login.dart';
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -8,10 +9,27 @@ class Home extends StatelessWidget {
       appBar: new AppBar(
         title: new Text('Hello'),
       ),
-      body: new Center(
-        child: new Text('This is the home page'),
+     
+      body: Container(
+        color: Colors.white,
+        child: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text("This is the Home Page"),
+              _logout(),
+              
+            ],
+          ),
+        ),
       ),
-      
     );
   }
+  Widget _logout(){
+    return  RaisedButton(onPressed: (){
+       Navigator.push(context,MaterialPageRoute(builder:(context)=>LoginPage()),);
+    });
+  }
+  
 }
