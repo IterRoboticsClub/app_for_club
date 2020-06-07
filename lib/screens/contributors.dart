@@ -103,15 +103,15 @@ class UserList extends StatelessWidget {
               padding: const EdgeInsets.all(12.0),
               child: CircleAvatar(
                 backgroundImage: NetworkImage(users[index].profileAvatar),
-                minRadius: 60,
-                maxRadius: 60,
+                minRadius: 50,
+                maxRadius: 50,
               ),
             ),
             FlatButton(
               child: Text(
                 users[index].userId,
                 style: GoogleFonts.breeSerif(
-                  fontSize: 26,
+                  fontSize: 24,
                   fontWeight: FontWeight.bold,
                 ),
               ),

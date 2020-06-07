@@ -1,5 +1,5 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:appforclub/screens/home.dart';
+import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -8,40 +8,7 @@ class IntroScreen extends StatefulWidget {
   _IntroScreenState createState() => _IntroScreenState();
 }
 
-class _IntroScreenState extends State<IntroScreen>
-    with TickerProviderStateMixin {
-  AnimationController _controller;
-
-  final Tween<double> turnsTween = Tween<double>(
-    begin: 1,
-    end: 2,
-  );
-
-  @override
-  void initState() {
-    _controller = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 10),
-    );
-    _controller.addListener(() {
-      setState(() {});
-    });
-    _controller.addStatusListener((status) {
-      if (status == AnimationStatus.completed) {
-        Navigator.of(context).pushReplacement(
-            new MaterialPageRoute(builder: (context) => new Home()));
-      }
-    });
-    _controller.forward().orCancel;
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
+class _IntroScreenState extends State<IntroScreen> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -53,23 +20,15 @@ class _IntroScreenState extends State<IntroScreen>
               flex: 2,
             ),
             Center(
-              child: Stack(
-                alignment: Alignment.center,
-                children: <Widget>[
-                  RotationTransition(
-                    turns: turnsTween.animate(_controller),
-                    child: Image.asset(
-                      'images/irc_logo_gear.png',
-                      width: 190,
-                      height: 190,
-                    ),
-                  ),
-                  Image.asset(
-                    'images/irc_logo_foreground.png',
-                    width: 146,
-                    height: 146,
-                  ),
-                ],
+              child: Container(
+                width: 200,
+                height: 200,
+                child: FlareActor(
+                  "assets/rotating_gear_irc.flr",
+                  alignment: Alignment.center,
+                  fit: BoxFit.fill,
+                  animation: "rotate_gear",
+                ),
               ),
             ),
             Spacer(
