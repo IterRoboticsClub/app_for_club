@@ -2,6 +2,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:appforclub/screens/home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:appforclub/screens/login.dart';
 
 class IntroScreen extends StatefulWidget {
   @override
@@ -29,7 +30,7 @@ class _IntroScreenState extends State<IntroScreen>
     _controller.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
         Navigator.of(context).pushReplacement(
-            new MaterialPageRoute(builder: (context) => new Home()));
+            new MaterialPageRoute(builder: (context) => new LoginPage()));
       }
     });
     _controller.forward().orCancel;
