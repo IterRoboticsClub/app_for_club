@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 Widget appBarhead(String title) {
   return AppBar(
+    backgroundColor: Colors.black,
     title: Text(
       title,
       style: GoogleFonts.aBeeZee(fontWeight: FontWeight.bold),

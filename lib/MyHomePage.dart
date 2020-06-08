@@ -30,7 +30,7 @@ class _MyHomePageState extends State<MyHomePage> {
             children: <Widget>[
               Center(
                 child: Text(
-                  'Welocme to ITER Robotics Club',
+                  'WELCOME TO ITER ROBOTICS CLUB',
                   style: TextStyle(fontSize: 20),
                 ),
               ),
@@ -47,6 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           children: <Widget>[
             AppBar(
+              backgroundColor: Colors.black,
               title: Text(
                 'IRC',
                 softWrap: true,
@@ -60,6 +61,14 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Divider(),
             ListTile(
+              leading: Icon(Icons.home),
+              title: Text('Home'),
+              onTap: null,
+              //  () => Navigator.push(context,
+              //     MaterialPageRoute(builder: (context) => Page_Name())),
+            ),
+            Divider(),
+            ListTile(
               leading: Icon(Icons.assignment_ind),
               title: Text('Profile'),
               onTap: null,
@@ -68,8 +77,8 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Divider(),
             ListTile(
-              leading: Icon(Icons.settings_power),
-              title: Text('LogOut/LogIn'),
+              leading: Icon(Icons.web),
+              title: Text('Cool Links'),
               onTap: null,
               //  () => Navigator.push(context,
               //     MaterialPageRoute(builder: (context) => Page_Name())),
@@ -77,7 +86,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Divider(),
             ListTile(
               leading: Icon(Icons.verified_user),
-              title: Text('Contibutors'),
+              title: Text('Contributors'),
               onTap: () => Navigator.push(context,
                   MaterialPageRoute(builder: (context) => Contributors())),
             ),
@@ -91,7 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Divider(),
             ListTile(
-              leading: Icon(Icons.settings_input_component),
+              leading: Icon(Icons.settings),
               title: Text('Settings'),
               onTap: null,
               //  () => Navigator.push(context,
@@ -101,15 +110,43 @@ class _MyHomePageState extends State<MyHomePage> {
             ListTile(
               leading: Icon(Icons.info),
               title: Text('About Us'),
-              onTap: () => Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => AboutUs())),
+              onTap: () =>
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => AboutUs())),
+            ),
+            Divider(),
+            ListTile(
+              leading: Icon(Icons.people),
+              title: Text('Our Alumni'),
+              onTap: null,
+              //  () => Navigator.push(context,
+              //     MaterialPageRoute(builder: (context) => Page_Name())),
+            ),
+            Divider(),
+            ListTile(
+              leading: Icon(Icons.nature),
+              title: Text('IRC TREE'),
+              onTap: null,
+              //  () => Navigator.push(context,
+              //     MaterialPageRoute(builder: (context) => Page_Name())),
             ),
             Divider(),
             ListTile(
               leading: Icon(Icons.info_outline),
-              title: Text('About IRC'),
-              onTap: () => Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => AboutIrc())),
+              title: Text('ABOUT IRC'),
+              onTap: () =>
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => AboutIrc())),
+            ),
+            Divider(),
+            ListTile(
+              leading: Icon(Icons.apps),
+              title: Text('App Info'),
+              onTap: null,
+              //  () => Navigator.push(context,
+              //     MaterialPageRoute(builder: (context) => Page_Name())),
             ),
           ],
         ),

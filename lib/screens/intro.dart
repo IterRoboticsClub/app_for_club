@@ -1,9 +1,8 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:appforclub/screens/login.dart';
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../MyHomePage.dart';
 
 class IntroScreen extends StatefulWidget {
   @override
@@ -37,7 +36,7 @@ class _IntroScreenState extends State<IntroScreen> {
           TypewriterAnimatedTextKit(
             onFinished: () => {
               Navigator.of(context).pushReplacement(
-                  new MaterialPageRoute(builder: (context) => new MyHomePage()))
+                  new MaterialPageRoute(builder: (context) => new LoginPage()))
             },
             text: ["We Learn,We Build,We Share"],
             textStyle: TextStyle(

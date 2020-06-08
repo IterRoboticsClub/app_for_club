@@ -1,7 +1,7 @@
+import 'package:appforclub/MyHomePage.dart';
 import 'package:flutter/material.dart';
+
 import 'sign_in.dart';
-import  'package:appforclub/screens/home.dart';
-import 'package:appforclub/screens/about_us.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -22,7 +22,7 @@ class _LoginPageState extends State<LoginPage> {
               // FlutterLogo(size: 150),
               SizedBox(height: 50),
               _signInButton(),
-             _skipText(),
+              _skipText(),
             ],
           ),
         ),
@@ -35,15 +35,15 @@ class _LoginPageState extends State<LoginPage> {
       splashColor: Colors.grey,
       onPressed: () {
         signInWithGoogle().whenComplete(() {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) {
-              return Home();
-            },
-          ),
-        );
-      });
-    },
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) {
+                return MyHomePage();
+              },
+            ),
+          );
+        });
+      },
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
       highlightElevation: 0,
       borderSide: BorderSide(color: Colors.grey),
@@ -53,7 +53,7 @@ class _LoginPageState extends State<LoginPage> {
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Image(image: AssetImage("images/logo.png"), height: 35.0),
+            Image(image: AssetImage("images/logo_google.png"), height: 35.0),
             Padding(
               padding: const EdgeInsets.only(left: 10),
               child: Text(
@@ -70,13 +70,16 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Widget _skipText(){
+  Widget _skipText() {
     return RaisedButton(
-          onPressed: () {
-            // Navigate back to first route when tapped.
-            Navigator.push(context,MaterialPageRoute(builder:(context)=>AboutUs()),);
-          },
-          color:Colors.blue,
-          child: Text('skip login'));
+        onPressed: () {
+          // Navigate back to first route when tapped.
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => MyHomePage()),
+          );
+        },
+        color: Colors.blue,
+        child: Text('skip login'));
   }
 }
