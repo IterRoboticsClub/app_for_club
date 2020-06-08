@@ -1,5 +1,5 @@
-name: flutter_tutorial
-description: A new Flutter project.
+name: appforclub
+description: An app for iter robotics club.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
@@ -23,12 +23,21 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  shared_preferences: ^0.5.7+3
+  animated_text_kit: ^2.2.0
+  google_fonts: ^1.1.0
+  http: ^0.12.1
+  url_launcher: ^5.4.10
+  firebase_core: ^0.4.0
+  
+
 
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.3
-
+  firebase_auth: ^0.15.2
+  google_sign_in: ^4.0.4
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -46,9 +55,8 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/earth.jpg
-    -assets/
-    
+    - images/
+  #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -61,11 +69,21 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  fonts:
-    - family: IndieFlower
-      fonts:
-        - asset: fonts/IndieFlower-Regular.ttf
-       
-  
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
+  #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+  fonts:
+    - family: BreeSerif
+      fonts:
+        - asset: fonts/BreeSerif-Regular.ttf
