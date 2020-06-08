@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "520865970779",
+    "firebase_url": "https://irc-connect.firebaseio.com",
+    "project_id": "irc-connect",
+    "storage_bucket": "irc-connect.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:520865970779:android:139ab16798be2674801d7e",
+        "android_client_info": {
+          "package_name": "com.iterroboticsclub.appforclub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "520865970779-t2h1qovi9uoegtroh5tfmgoid1ota1h7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.iterroboticsclub.appforclub",
+            "certificate_hash": "825445d697f72aeefa081085cba2736a29eb9c82"
+          }
+        },
+        {
+          "client_id": "520865970779-jesiiskee563of8t5uakhjm516irc5v4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxI1kae9-CGm0IUB-Sr0KAl_wdneVkTAA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "520865970779-jesiiskee563of8t5uakhjm516irc5v4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
