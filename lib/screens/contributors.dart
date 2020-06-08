@@ -92,27 +92,33 @@ class UserList extends StatelessWidget {
           SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
       itemCount: users.length,
       itemBuilder: (context, index) {
-        return Column(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: CircleAvatar(
-                backgroundImage: NetworkImage(users[index].profileAvatar),
-                minRadius: 60,
-                maxRadius: 60,
-              ),
-            ),
-            FlatButton(
-              child: Text(
-                users[index].userId,
-                style: GoogleFonts.breeSerif(
-                  fontSize: 26,
-                  fontWeight: FontWeight.bold,
+        return InkWell(
+          onTap: () => launchURL(users[index].gitUrl),
+          child: SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: CircleAvatar(
+                    backgroundImage: NetworkImage(users[index].profileAvatar),
+                    minRadius: 60,
+                    maxRadius: 60,
+                  ),
                 ),
-              ),
-              onPressed: () => launchURL(users[index].gitUrl),
+                // FlatButton(
+                //   child:
+                Text(
+                  users[index].userId,
+                  style: GoogleFonts.breeSerif(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                //   onPressed: null, //() => launchURL(users[index].gitUrl),
+                // ),
+              ],
             ),
-          ],
+          ),
         );
       },
     );

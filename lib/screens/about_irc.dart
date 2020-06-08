@@ -1,7 +1,6 @@
 import 'package:appforclub/widgets/appBar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class AboutIrc extends StatelessWidget {
   @override
@@ -32,10 +31,10 @@ class AboutIrc extends StatelessWidget {
                 "THE WORLDWIDE DEVELOPMENTS IN THE FIELD OF ROBOTICS"
                 "TODAY HAS OBVIOUSLY ENCOURAGED WHOOPING NUMBER OF "
                 "STUDENTS TAKING ‘ROBOTICS’ INTO SOMETHING MORE THAN JUST A HOBBY.",
-                style: GoogleFonts.quicksand(
-                    color: Colors.grey,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w900),
+                // style: GoogleFonts.quicksand(
+                //     color: Colors.grey,
+                //     fontSize: 16,
+                //     fontWeight: FontWeight.w900),
                 textAlign: TextAlign.center,
               ),
             ),
