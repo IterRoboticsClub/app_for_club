@@ -3,9 +3,9 @@
 These are the list of contributors to this project.
 
 > ## How to edit it
-> - Copy one of the contributers part under multiple lines ("||||||")
+> - Copy one of the contributers part & paste it in the end
 >  - Replace image with your github image by copying the image 
->  - - and make sure that image link has "s=260" replace it with "s=30" to resize the image
+>  - - and make sure that image link has "s=260" replace it with "s=50" to resize the image
 >  - now replace your name, github link, linkedin link, instagram link
 >  - you can leave blank if you dont have one of the above mentioned links or replace it with some new one by changing its name
 >   #### NOTE: Before making PR make sure to check if everything is ok in preview section 
