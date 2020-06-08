@@ -1,8 +1,9 @@
-import 'dart:async';
+// import 'dart:async';
 
-import 'package:appforclub/screens/about_us.dart';
-import 'package:appforclub/screens/intro.dart';
+import 'package:appforclub/MyHomePage.dart';
 import 'package:flutter/material.dart';
+// import 'package:appforclub/screens/about_us.dart';
+import 'package:appforclub/screens/intro.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() => runApp(new MyApp());
@@ -11,7 +12,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      home: new Launch(),
+      title: 'IRC',
+      debugShowCheckedModeBanner: false,
+      home: MyHomePage(),
+      theme: ThemeData(
+        accentColor: Colors.blueGrey,
+        backgroundColor: Colors.blueGrey,
+        textTheme: Theme.of(context).textTheme.apply(
+              fontFamily: 'BreeSerif',
+              // bodyColor: Colors.white,
+              // displayColor: Colors.white
+            ),
+      ),
     );
   }
 }
@@ -30,7 +42,7 @@ class LaunchState extends State<Launch> {
       //Check if logged in , if not go to login.dart
       //otherwise
       Navigator.of(context).pushReplacement(
-          new MaterialPageRoute(builder: (context) => new AboutUs()));
+          new MaterialPageRoute(builder: (context) => new MyHomePage()));
     } else {
       await prefs.setBool('seen', true);
       Navigator.of(context).pushReplacement(
