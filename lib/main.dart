@@ -1,9 +1,7 @@
-// import 'dart:async';
 
+import 'package:appforclub/screens/intro.dart';
 import 'package:appforclub/MyHomePage.dart';
 import 'package:flutter/material.dart';
-// import 'package:appforclub/screens/about_us.dart';
-import 'package:appforclub/screens/intro.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() => runApp(new MyApp());
@@ -20,8 +18,6 @@ class MyApp extends StatelessWidget {
         backgroundColor: Colors.blueGrey,
         textTheme: Theme.of(context).textTheme.apply(
               fontFamily: 'BreeSerif',
-              // bodyColor: Colors.white,
-              // displayColor: Colors.white
             ),
       ),
     );

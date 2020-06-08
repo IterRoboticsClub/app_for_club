@@ -105,8 +105,6 @@ class UserList extends StatelessWidget {
                     maxRadius: 60,
                   ),
                 ),
-                // FlatButton(
-                //   child:
                 Text(
                   users[index].userId,
                   style: GoogleFonts.breeSerif(
@@ -114,8 +112,6 @@ class UserList extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                //   onPressed: null, //() => launchURL(users[index].gitUrl),
-                // ),
               ],
             ),
           ),
