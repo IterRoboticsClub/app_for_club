@@ -25,3 +25,9 @@ These are the list of contributors to this project.
 > - [LinkedIn](https://www.linkedin.com/in/subhamkr555/)
 > - [Instagram](https://www.instagram.com/shubhsboson)
 
+> ![Sourav Bera](https://avatars1.githubusercontent.com/u/53810519?s=50&u=554627282a98d2c2b6efd426b4964d4dc2eaa643&v=4) 
+> ### Sourav Bera   
+> - [Github](https://github.com/Zeo-shark) 
+> - [LinkedIn](https://www.linkedin.com/mwlite/in/sourav-bera-a61186195)
+> - [Instagram](https://www.instagram.com/sauravbear2001/)
+
