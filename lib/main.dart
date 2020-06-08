@@ -1,6 +1,5 @@
-
-import 'package:appforclub/screens/intro.dart';
 import 'package:appforclub/MyHomePage.dart';
+import 'package:appforclub/screens/intro.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -10,9 +9,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      title: 'IRC',
-      debugShowCheckedModeBanner: false,
-      home: MyHomePage(),
+      home: Launch(),
       theme: ThemeData(
         accentColor: Colors.blueGrey,
         backgroundColor: Colors.blueGrey,

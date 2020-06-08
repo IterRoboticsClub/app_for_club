@@ -3,6 +3,8 @@ import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../MyHomePage.dart';
+
 class IntroScreen extends StatefulWidget {
   @override
   _IntroScreenState createState() => _IntroScreenState();
@@ -33,6 +35,10 @@ class _IntroScreenState extends State<IntroScreen> {
             flex: 2,
           ),
           TypewriterAnimatedTextKit(
+            onFinished: () => {
+              Navigator.of(context).pushReplacement(
+                  new MaterialPageRoute(builder: (context) => new MyHomePage()))
+            },
             text: ["We Learn,We Build,We Share"],
             textStyle: TextStyle(
                 fontFamily: "BreeSerif",
