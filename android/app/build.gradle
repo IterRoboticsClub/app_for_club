@@ -54,5 +54,5 @@ flutter {
 }
 dependencies{
     testImplementation 'junit:junit:4.12'
-    implementation 'com.google.firebase:firebase-analytics:17.2.2'
+    // implementation 'com.google.firebase:firebase-analytics:17.2.2'
 }
