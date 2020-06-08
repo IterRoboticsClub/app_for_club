@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:appforclub/widgets/appBar.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -60,14 +61,8 @@ class _ContributorsState extends State<Contributors> {
   Widget build(BuildContext context) {
     return Container(
       child: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            'CONTRIBUTORS',
-            style: GoogleFonts.metalMania(),
-          ),
-          backgroundColor: Colors.black,
-        ),
-        backgroundColor: Colors.white24,
+        appBar: appBarhead('CONTRIBUTORS'),
+        // backgroundColor: Colors.white24,
         body: FutureBuilder<List<User>>(
           future: fetchData(),
           builder: (context, snapshot) {
@@ -97,27 +92,29 @@ class UserList extends StatelessWidget {
           SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
       itemCount: users.length,
       itemBuilder: (context, index) {
-        return Column(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: CircleAvatar(
-                backgroundImage: NetworkImage(users[index].profileAvatar),
-                minRadius: 50,
-                maxRadius: 50,
-              ),
-            ),
-            FlatButton(
-              child: Text(
-                users[index].userId,
-                style: GoogleFonts.breeSerif(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
+        return InkWell(
+          onTap: () => launchURL(users[index].gitUrl),
+          child: SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: CircleAvatar(
+                    backgroundImage: NetworkImage(users[index].profileAvatar),
+                    minRadius: 60,
+                    maxRadius: 60,
+                  ),
                 ),
-              ),
-              onPressed: () => launchURL(users[index].gitUrl),
+                Text(
+                  users[index].userId,
+                  style: GoogleFonts.breeSerif(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
         );
       },
     );
