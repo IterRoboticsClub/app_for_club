@@ -110,10 +110,8 @@ class _MyHomePageState extends State<MyHomePage> {
             ListTile(
               leading: Icon(Icons.info),
               title: Text('About Us'),
-              onTap: () =>
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => AboutUs())),
+              onTap: () => Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => AboutUs())),
             ),
             Divider(),
             ListTile(
@@ -135,10 +133,8 @@ class _MyHomePageState extends State<MyHomePage> {
             ListTile(
               leading: Icon(Icons.info_outline),
               title: Text('ABOUT IRC'),
-              onTap: () =>
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => AboutIrc())),
+              onTap: () => Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => AboutIrc())),
             ),
             Divider(),
             ListTile(
