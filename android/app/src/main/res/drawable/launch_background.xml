@@ -3,11 +3,11 @@
     <item android:drawable="@android:color/white" />
 
     <!-- You can insert your own image assets here -->
-    <!--item
+    <item
         android:width="200dp"
         android:height="200dp"
         android:bottom="250px"
         android:gravity="center">
         <bitmap android:src="@drawable/irc_logo" />
-    </item-->
+    </item>
 </layer-list>
