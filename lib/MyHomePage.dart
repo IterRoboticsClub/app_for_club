@@ -105,10 +105,8 @@ class _MyHomePageState extends State<MyHomePage> {
             ListTile(
               leading: Icon(Icons.settings),
               title: Text('Settings'),
-              onTap: () =>
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Settings())),
+              onTap: () => Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Settings())),
             ),
             Divider(),
             ListTile(
