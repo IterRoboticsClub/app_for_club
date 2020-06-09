@@ -84,9 +84,8 @@ class _MyHomePageState extends State<MyHomePage> {
             ListTile(
               leading: Icon(Icons.web),
               title: Text('Cool Links'),
-              onTap: () =>
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => CoolLinks())),
+              onTap: () => Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => CoolLinks())),
             ),
             Divider(),
             ListTile(
