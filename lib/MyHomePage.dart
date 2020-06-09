@@ -77,9 +77,8 @@ class _MyHomePageState extends State<MyHomePage> {
             ListTile(
               leading: Icon(Icons.assignment_ind),
               title: Text('Profile'),
-              onTap: () =>
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => ProfileView())),
+              onTap: () => Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ProfileView())),
             ),
             Divider(),
             ListTile(
