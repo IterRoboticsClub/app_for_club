@@ -127,10 +127,8 @@ class _MyHomePageState extends State<MyHomePage> {
             ListTile(
               leading: Icon(Icons.nature),
               title: Text('IRC TREE'),
-              onTap: () =>
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => IrcTree())),
+              onTap: () => Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => IrcTree())),
             ),
             Divider(),
             ListTile(
