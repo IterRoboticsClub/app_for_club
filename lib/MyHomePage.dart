@@ -98,9 +98,8 @@ class _MyHomePageState extends State<MyHomePage> {
             ListTile(
               leading: Icon(Icons.contacts),
               title: Text('Contact Us'),
-              onTap: () =>
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => ContactUs())),
+              onTap: () => Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ContactUs())),
             ),
             Divider(),
             ListTile(
