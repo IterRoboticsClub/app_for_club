@@ -29,6 +29,7 @@ dependencies:
   http: ^0.12.1
   url_launcher: ^5.4.10
   flare_flutter: ^2.0.3
+  package_info: ^0.4.1 #to get build number , app_name , app_ver
   #firebase dependencies
   firebase_core: ^0.4.5
   firebase_analytics: ^5.0.14
