@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'screens/about_irc.dart';
 import 'screens/about_us.dart';
 import 'screens/contributors.dart';
+import 'screens/cool_links.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -79,9 +80,9 @@ class _MyHomePageState extends State<MyHomePage> {
             ListTile(
               leading: Icon(Icons.web),
               title: Text('Cool Links'),
-              onTap: null,
-              //  () => Navigator.push(context,
-              //     MaterialPageRoute(builder: (context) => Page_Name())),
+              onTap: 
+               () => Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => CoolLinks())),
             ),
             Divider(),
             ListTile(
