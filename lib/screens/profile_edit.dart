@@ -17,6 +17,24 @@ class _ProfileEditState extends State<ProfileEdit> {
   bool isStudent = false;
 
   @override
+  void initState() {
+    regdNo = mainuser.regdNo;
+    phone = mainuser.phone;
+    whatsapp = mainuser.whatsapp;
+    year = mainuser.year;
+    passingYear = mainuser.passingYear;
+    branch = mainuser.branch;
+    github = mainuser.github;
+    facebook = mainuser.facebook;
+    instagram = mainuser.instagram;
+    linkedin = mainuser.linkedin;
+    website = mainuser.website;
+    imgurl = mainuser.imgurl;
+    isStudent = mainuser.isStudent;
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBarhead('Edit Profile'),
@@ -37,8 +55,8 @@ class _ProfileEditState extends State<ProfileEdit> {
             mainuser.passingYear = passingYear;
             if (imgurl != null) mainuser.setImgUrl(imgurl);
           });
-          Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (context) => ProfileView()));
+          Navigator.pop(context,
+              MaterialPageRoute(builder: (context) => new ProfileView()));
         },
         child: Icon(
           LineAwesomeIcons.save,
