@@ -20,7 +20,8 @@ class _CoolLinksState extends State<CoolLinks> {
       var keys = snap.value.keys;
       var data = snap.value;
        //data in JSON
-      Weblinks.clear();
+       print(keys);
+      print(data);
       for (var key in keys) {
         Posts p = new Posts(
             data[key]['image'],
@@ -34,6 +35,7 @@ class _CoolLinksState extends State<CoolLinks> {
 
       setState(() {
         print('Length : ${Weblinks.length}');
+        print('JSONDATA LENGth : ${data.length}');
       });
     });
   }
@@ -42,7 +44,7 @@ class _CoolLinksState extends State<CoolLinks> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: new Text('Firebase Data'),
+        title: new Text('${Weblinks.length} '),
       ),
       body: new Container(
         child: Weblinks.length == 0

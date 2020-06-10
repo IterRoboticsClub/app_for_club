@@ -1,14 +1,37 @@
 import 'package:appforclub/MyHomePage.dart';
+import 'package:appforclub/screens/sign_in.dart';
 import 'package:flutter/material.dart';
 
-import 'sign_in.dart';
-
+import 'package:google_sign_in/google_sign_in.dart';
+import './home.dart';
+import './about_us.dart';
 class LoginPage extends StatefulWidget {
   @override
   _LoginPageState createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
+  bool _isLoggedIn= false;
+
+  GoogleSignIn _googleSignIn= GoogleSignIn(scopes: ['email']);
+  _login() async {
+    try{
+      await _googleSignIn.signIn();
+      setState(() {
+        _isLoggedIn=true;
+      })
+      ;
+    }catch(err){
+      print(err);
+    }
+  }
+
+
+  _logout() {
+    setState(() {
+      _isLoggedIn = false;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +45,7 @@ class _LoginPageState extends State<LoginPage> {
               // FlutterLogo(size: 150),
               SizedBox(height: 50),
               _signInButton(),
-              _skipText(),
+             _skipText(),
             ],
           ),
         ),
@@ -68,16 +91,16 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Widget _skipText() {
+  Widget _skipText(){
     return RaisedButton(
-        onPressed: () {
-          // Navigate back to first route when tapped.
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => MyHomePage()),
-          );
-        },
-        color: Colors.blue,
-        child: Text('skip login'));
+          onPressed: () {
+            // Navigate back to first route when tapped.
+            Navigator.push(context,MaterialPageRoute(builder:(context)=>AboutUs()),);
+          },
+          color:Colors.blue,
+          child: Text('skip login'));
   }
 }
+
+      
+ 
