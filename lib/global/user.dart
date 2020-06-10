@@ -4,7 +4,7 @@ class MainUser {
   String email;
 
   // is the user a student or alumni
-  bool isStudent;
+  bool isStudent = false;
   bool isAnon = false;
 
   //info for student
@@ -12,12 +12,14 @@ class MainUser {
   int whatsapp;
   int regdNo;
   String branch;
+  int year;
 
-  //links
+  int passingYear;
   String imgurl;
   String github;
   String instagram;
   String facebook;
+  String linkedin;
   String website;
 
   MainUser({this.uid, this.name, this.email, this.isAnon, this.imgurl});

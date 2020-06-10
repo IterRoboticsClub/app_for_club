@@ -1,6 +1,7 @@
 // import 'dart:html';
 
 import 'package:appforclub/MyHomePage.dart';
+import 'package:appforclub/screens/profile_edit.dart';
 import 'package:appforclub/widgets/appBar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,8 @@ class _ProfileViewState extends State<ProfileView> {
     return new Scaffold(
       appBar: appBarhead('Profile'),
       floatingActionButton: FloatingActionButton(
-        onPressed: null,
+        onPressed: () => Navigator.push(
+            context, MaterialPageRoute(builder: (context) => ProfileEdit())),
         child: Icon(Icons.edit),
       ),
       body: new Center(
