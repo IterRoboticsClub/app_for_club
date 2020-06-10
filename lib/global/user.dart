@@ -22,11 +22,20 @@ class MainUser {
   String linkedin;
   String website;
 
-  MainUser({this.uid, this.name, this.email, this.isAnon, this.imgurl});
+  MainUser({this.uid, this.name, this.email, this.isAnon, this.imgurl}) {
+    isStudent = false;
+    isAnon = false;
+  }
 
-  void studentDetails(bool isStudent,
-      {int regd, int ph, int whatsappPh, String branch}) {
-    this.isStudent = isStudent;
+  void studentDetails(
+      {bool isStudent,
+      int regd,
+      int ph,
+      int whatsappPh,
+      String branch,
+      int year}) {
+    if (isStudent != null) this.isStudent = isStudent;
+    this.year = year;
     this.regdNo = regd;
     this.phone = ph;
     this.whatsapp = whatsappPh;
@@ -37,8 +46,14 @@ class MainUser {
     this.imgurl = imgurl;
   }
 
-  void links({String github, String insta, String fb, String website}) {
+  void links(
+      {String github,
+      String insta,
+      String fb,
+      String website,
+      String linkedin}) {
     this.github = github;
+    this.linkedin = linkedin;
     this.facebook = fb;
     this.instagram = insta;
     this.website = website;

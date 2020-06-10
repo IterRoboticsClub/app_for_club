@@ -1,6 +1,8 @@
 import 'package:appforclub/MyHomePage.dart';
+import 'package:appforclub/screens/profile_view.dart';
 import 'package:appforclub/widgets/appBar.dart';
 import 'package:flutter/material.dart';
+import 'package:line_awesome_icons/line_awesome_icons.dart';
 
 class ProfileEdit extends StatefulWidget {
   @override
@@ -8,20 +10,67 @@ class ProfileEdit extends StatefulWidget {
 }
 
 class _ProfileEditState extends State<ProfileEdit> {
+  int regdNo, phone, whatsapp, year;
+  int passingYear;
+  String branch, github, facebook, instagram, linkedin, website;
+  String imgurl;
+  bool isStudent = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBarhead('Edit Profile'),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            mainuser.branch = branch;
+            mainuser.phone = phone;
+            mainuser.regdNo = regdNo;
+            mainuser.whatsapp = whatsapp;
+            mainuser.year = year;
+            mainuser.links(
+                fb: facebook,
+                github: github,
+                insta: instagram,
+                website: website,
+                linkedin: linkedin);
+            mainuser.passingYear = passingYear;
+            if (imgurl != null) mainuser.setImgUrl(imgurl);
+          });
+          Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (context) => ProfileView()));
+        },
+        child: Icon(
+          LineAwesomeIcons.save,
+        ),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
+              ListTile(
+                leading: Text('Profile Img URL:'),
+                title: TextFormField(
+                  keyboardType: TextInputType.url,
+                  onChanged: (String str) {
+                    setState(() {
+                      imgurl = str;
+                    });
+                  },
+                  decoration: InputDecoration(
+                      hintText: mainuser.imgurl != null
+                          ? mainuser.imgurl
+                          : 'Paste Url Here',
+                      contentPadding: EdgeInsets.symmetric(horizontal: 5)),
+                ),
+              ),
               CheckboxListTile(
                 title: Text('Student'),
                 value: mainuser.isStudent,
                 onChanged: (value) {
                   setState(() {
+                    // isStudent = value;
                     mainuser.isStudent = value;
                   });
                 },
@@ -35,11 +84,13 @@ class _ProfileEditState extends State<ProfileEdit> {
                             keyboardType: TextInputType.number,
                             onChanged: (String str) {
                               setState(() {
-                                mainuser.regdNo = int.parse(str);
+                                regdNo = int.parse(str);
                               });
                             },
                             decoration: InputDecoration(
-                                hintText: '1941010000',
+                                hintText: mainuser.regdNo != null
+                                    ? mainuser.regdNo.toString()
+                                    : '1941010000',
                                 contentPadding:
                                     EdgeInsets.symmetric(horizontal: 5)),
                           ),
@@ -50,11 +101,13 @@ class _ProfileEditState extends State<ProfileEdit> {
                             keyboardType: TextInputType.number,
                             onChanged: (String str) {
                               setState(() {
-                                mainuser.phone = int.parse(str);
+                                phone = int.parse(str);
                               });
                             },
                             decoration: InputDecoration(
-                                hintText: 'Enter only 10 digit',
+                                hintText: mainuser.phone != null
+                                    ? mainuser.phone.toString()
+                                    : 'Enter only 10 digit',
                                 contentPadding:
                                     EdgeInsets.symmetric(horizontal: 5)),
                           ),
@@ -62,16 +115,15 @@ class _ProfileEditState extends State<ProfileEdit> {
                         ListTile(
                           leading: Text('Whatsapp No.'),
                           trailing: Checkbox(
-                            value: mainuser.whatsapp == mainuser.phone &&
-                                    mainuser.phone != null
+                            value: whatsapp == phone && phone != null
                                 ? true
                                 : false,
                             onChanged: (value) {
                               setState(() {
                                 if (value)
-                                  mainuser.whatsapp = mainuser.phone;
+                                  whatsapp = phone;
                                 else
-                                  mainuser.whatsapp = null;
+                                  whatsapp = null;
                               });
                             },
                           ),
@@ -82,15 +134,13 @@ class _ProfileEditState extends State<ProfileEdit> {
                           title: TextFormField(
                             keyboardType: TextInputType.number,
                             onChanged: (String str) {
-                              mainuser.phone = int.parse(str);
+                              phone = int.parse(str);
                             },
-                            enabled: mainuser.whatsapp != mainuser.phone
-                                ? true
-                                : false,
+                            enabled: whatsapp != phone ? true : false,
                             decoration: InputDecoration(
-                                hintText: mainuser.whatsapp == null
+                                hintText: whatsapp == null
                                     ? 'Enter only 10 digits'
-                                    : '${mainuser.whatsapp}',
+                                    : '$whatsapp',
                                 contentPadding:
                                     EdgeInsets.symmetric(horizontal: 5)),
                           ),
@@ -101,11 +151,13 @@ class _ProfileEditState extends State<ProfileEdit> {
                             keyboardType: TextInputType.number,
                             onChanged: (String str) {
                               setState(() {
-                                mainuser.year = int.parse(str);
+                                year = int.parse(str);
                               });
                             },
                             decoration: InputDecoration(
-                                hintText: '1, 2, 3, 4',
+                                hintText: mainuser.year != null
+                                    ? mainuser.year.toString()
+                                    : '1, 2, 3, 4',
                                 contentPadding:
                                     EdgeInsets.symmetric(horizontal: 5)),
                           ),
@@ -120,11 +172,13 @@ class _ProfileEditState extends State<ProfileEdit> {
                             keyboardType: TextInputType.number,
                             onChanged: (String str) {
                               setState(() {
-                                mainuser.year = int.parse(str);
+                                passingYear = int.parse(str);
                               });
                             },
                             decoration: InputDecoration(
-                                hintText: '2018, 2019, etc.',
+                                hintText: mainuser.passingYear != null
+                                    ? mainuser.passingYear.toString()
+                                    : '2018, 2019, etc.',
                                 contentPadding:
                                     EdgeInsets.symmetric(horizontal: 5)),
                           ),
@@ -137,11 +191,13 @@ class _ProfileEditState extends State<ProfileEdit> {
                   keyboardType: TextInputType.text,
                   onChanged: (String str) {
                     setState(() {
-                      mainuser.branch = str;
+                      branch = str;
                     });
                   },
                   decoration: InputDecoration(
-                      hintText: 'CSE,CSIT,CE,ME,EE,etc',
+                      hintText: mainuser.branch != null
+                          ? mainuser.branch
+                          : 'CS,CSIT,CE,ME,EE,etc',
                       contentPadding: EdgeInsets.symmetric(horizontal: 5)),
                 ),
               ),
@@ -152,11 +208,13 @@ class _ProfileEditState extends State<ProfileEdit> {
                   keyboardType: TextInputType.url,
                   onChanged: (String str) {
                     setState(() {
-                      mainuser.github = str;
+                      github = str;
                     });
                   },
                   decoration: InputDecoration(
-                      hintText: 'Paste Url Here',
+                      hintText: mainuser.github != null
+                          ? mainuser.github
+                          : 'Paste Url Here',
                       contentPadding: EdgeInsets.symmetric(horizontal: 5)),
                 ),
               ),
@@ -166,11 +224,13 @@ class _ProfileEditState extends State<ProfileEdit> {
                   keyboardType: TextInputType.url,
                   onChanged: (String str) {
                     setState(() {
-                      mainuser.instagram = str;
+                      instagram = str;
                     });
                   },
                   decoration: InputDecoration(
-                      hintText: 'Paste Url Here',
+                      hintText: mainuser.instagram != null
+                          ? mainuser.instagram
+                          : 'Paste Url Here',
                       contentPadding: EdgeInsets.symmetric(horizontal: 5)),
                 ),
               ),
@@ -180,11 +240,13 @@ class _ProfileEditState extends State<ProfileEdit> {
                   keyboardType: TextInputType.url,
                   onChanged: (String str) {
                     setState(() {
-                      mainuser.facebook = str;
+                      facebook = str;
                     });
                   },
                   decoration: InputDecoration(
-                      hintText: 'Paste Url Here',
+                      hintText: mainuser.facebook != null
+                          ? mainuser.facebook
+                          : 'Paste Url Here',
                       contentPadding: EdgeInsets.symmetric(horizontal: 5)),
                 ),
               ),
@@ -194,11 +256,13 @@ class _ProfileEditState extends State<ProfileEdit> {
                   keyboardType: TextInputType.url,
                   onChanged: (String str) {
                     setState(() {
-                      mainuser.linkedin = str;
+                      linkedin = str;
                     });
                   },
                   decoration: InputDecoration(
-                      hintText: 'Paste Url Here',
+                      hintText: mainuser.linkedin != null
+                          ? mainuser.linkedin
+                          : 'Paste Url Here',
                       contentPadding: EdgeInsets.symmetric(horizontal: 5)),
                 ),
               ),
@@ -208,50 +272,26 @@ class _ProfileEditState extends State<ProfileEdit> {
                   keyboardType: TextInputType.url,
                   onChanged: (String str) {
                     setState(() {
-                      mainuser.website = str;
+                      website = str;
                     });
                   },
                   decoration: InputDecoration(
-                      hintText: 'Paste Url Here',
+                      hintText: mainuser.website != null
+                          ? mainuser.website
+                          : 'Paste Url Here',
                       contentPadding: EdgeInsets.symmetric(horizontal: 5)),
                 ),
               ),
+              SizedBox(
+                height: 100,
+              ),
+              // RaisedButton(onPressed: () {
+              //   branch = null, facebook=null,
+              // },)
             ],
           ),
         ),
       ),
     );
   }
-
-  // Widget editPlace(
-  //   String title,
-  //   bool isNumber,
-  //   var data,
-  // ) {
-  //   return Container(
-  //     child: Row(
-  //       children: <Widget>[
-  //         Text(
-  //           title,
-  //           style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-  //         ),
-  //         TextFormField(
-  //           keyboardType: isNumber ? TextInputType.number : TextInputType.text,
-  //           // textInputAction: TextInputAction.continueAction,
-  //           autofocus: false,
-  //           initialValue: null,
-  //           onChanged: (String str) {
-  //             if (isNumber)
-  //               data = int.parse(str);
-  //             else
-  //               data = str;
-  //           },
-  //           decoration: InputDecoration(
-  //               hintText: title,
-  //               contentPadding: EdgeInsets.symmetric(horizontal: 5)),
-  //         ),
-  //       ],
-  //     ),
-  //   );
-  // }
 }
