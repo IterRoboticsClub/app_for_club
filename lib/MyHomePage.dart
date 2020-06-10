@@ -1,3 +1,4 @@
+import 'package:appforclub/global/user.dart';
 import 'package:appforclub/screens/app_info.dart';
 import 'package:appforclub/screens/contact_us.dart';
 import 'package:appforclub/screens/cool_links.dart';
@@ -5,6 +6,7 @@ import 'package:appforclub/screens/home.dart';
 import 'package:appforclub/screens/irc_tree.dart';
 import 'package:appforclub/screens/profile_view.dart';
 import 'package:appforclub/screens/settings.dart';
+import 'package:appforclub/screens/sign_in.dart';
 import 'package:appforclub/widgets/appBar.dart';
 import 'package:flutter/material.dart';
 
@@ -17,10 +19,23 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
+MainUser mainuser;
+
 class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     fetchData();
+    setState(() {
+      signInWithGoogle().then((value) {
+        mainuser = MainUser(
+            uid: value.uid,
+            name: value.displayName,
+            email: value.email,
+            imgurl: value.photoUrl,
+            isAnon: value.isAnonymous);
+      });
+    });
+
     super.initState();
   }
 
@@ -39,8 +54,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Text(
                   'WELCOME TO ITER ROBOTICS CLUB',
                   style: TextStyle(fontSize: 20),
+                  textAlign: TextAlign.center,
                 ),
               ),
+              // RaisedButton(onPressed: () {
+              //   print(firebaseUser.isEmailVerified);
+              // })
             ],
           ),
         ),
@@ -141,10 +160,8 @@ class _MyHomePageState extends State<MyHomePage> {
             ListTile(
               leading: Icon(Icons.apps),
               title: Text('App Info'),
-              onTap: () =>
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => AppInfo())),
+              onTap: () => Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => AppInfo())),
             ),
           ],
         ),
