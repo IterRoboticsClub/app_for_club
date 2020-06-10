@@ -37,9 +37,7 @@ class _LoginPageState extends State<LoginPage> {
         signInWithGoogle().whenComplete(() {
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (context) {
-                return MyHomePage();
-              },
+              builder: (context) {return MyHomePage(); },
             ),
           );
         });
