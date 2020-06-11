@@ -5,6 +5,7 @@ import 'package:appforclub/screens/profile_edit.dart';
 import 'package:appforclub/widgets/appBar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:line_awesome_icons/line_awesome_icons.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -29,14 +30,14 @@ class _ProfileViewState extends State<ProfileView> {
             child: new Column(
           children: <Widget>[
             Center(
-              child: mainuser.imgurl == null
+              child: mainuser.imgurl == null //&& imgpath == null
                   ? Icon(
                       Icons.account_circle,
                       size: 70,
                     )
                   : Image.network(
                       mainuser.imgurl,
-                      fit: BoxFit.contain,
+                      fit: BoxFit.fill,
                     ),
             ),
             SizedBox(

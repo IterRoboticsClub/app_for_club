@@ -27,12 +27,14 @@ class _MyHomePageState extends State<MyHomePage> {
     fetchData();
     setState(() {
       signInWithGoogle().then((value) {
-        mainuser = MainUser(
-            uid: value.uid,
-            name: value.displayName,
-            email: value.email,
-            imgurl: value.photoUrl,
-            isAnon: value.isAnonymous);
+        setState(() {
+          mainuser = MainUser(
+              uid: value.uid,
+              name: value.displayName,
+              email: value.email,
+              imgurl: value.photoUrl,
+              isAnon: value.isAnonymous);
+        });
       });
     });
 
@@ -96,8 +98,10 @@ class _MyHomePageState extends State<MyHomePage> {
             ListTile(
               leading: Icon(Icons.assignment_ind),
               title: Text('Profile'),
-              onTap: () => Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => ProfileView())),
+              onTap: mainuser == null
+                  ? null
+                  : () => Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => ProfileView())),
             ),
             Divider(),
             ListTile(

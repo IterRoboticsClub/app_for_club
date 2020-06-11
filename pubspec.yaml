@@ -30,6 +30,7 @@ dependencies:
   url_launcher: ^5.4.10
   flare_flutter: ^2.0.3
   line_awesome_icons: ^1.0.4+2
+  image_picker: ^0.6.7+1
   #firebase dependencies
   firebase_core: ^0.4.5
   firebase_analytics: ^5.0.14

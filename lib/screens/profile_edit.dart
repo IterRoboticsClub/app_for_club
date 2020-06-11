@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:appforclub/MyHomePage.dart';
 import 'package:appforclub/screens/profile_view.dart';
 import 'package:appforclub/widgets/appBar.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:line_awesome_icons/line_awesome_icons.dart';
 
 class ProfileEdit extends StatefulWidget {
@@ -9,12 +12,27 @@ class ProfileEdit extends StatefulWidget {
   _ProfileEditState createState() => _ProfileEditState();
 }
 
+var imgpath;
+
 class _ProfileEditState extends State<ProfileEdit> {
   int regdNo, phone, whatsapp, year;
   int passingYear;
   String branch, github, facebook, instagram, linkedin, website;
   String imgurl;
   bool isStudent = false;
+
+  File _image;
+  final picker = ImagePicker();
+
+  Future getImage() async {
+    final pickedFile = await picker.getImage(source: ImageSource.gallery);
+
+    setState(() {
+      imgpath = pickedFile.path;
+      // Upload the file directly from here to get output in profile view
+      _image = File(pickedFile.path);
+    });
+  }
 
   @override
   void initState() {
@@ -67,21 +85,21 @@ class _ProfileEditState extends State<ProfileEdit> {
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
-              ListTile(
-                leading: Text('Profile Img URL:'),
-                title: TextFormField(
-                  keyboardType: TextInputType.url,
-                  onChanged: (String str) {
-                    setState(() {
-                      imgurl = str;
-                    });
-                  },
-                  decoration: InputDecoration(
-                      hintText: mainuser.imgurl != null
-                          ? mainuser.imgurl
-                          : 'Paste Url Here',
-                      contentPadding: EdgeInsets.symmetric(horizontal: 5)),
-                ),
+              Center(
+                child: _image == null
+                    ? Text('No image selected.')
+                    : Container(
+                        height: 100,
+                        width: 100,
+                        child: Image.file(
+                          _image,
+                          fit: BoxFit.fitWidth,
+                        )),
+              ),
+              RaisedButton(
+                onPressed: getImage,
+                // tooltip: 'Pick Image',
+                child: Icon(Icons.add_a_photo),
               ),
               CheckboxListTile(
                 title: Text('Student'),
