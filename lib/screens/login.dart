@@ -19,9 +19,10 @@ class _LoginPageState extends State<LoginPage> {
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              // FlutterLogo(size: 150),
               SizedBox(height: 50),
-              _signInButton(),
+              Builder(
+                builder: (context) => _signInButton(context),
+              ),
               _skipText(),
             ],
           ),
@@ -30,19 +31,29 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Widget _signInButton() {
+  Widget _signInButton(BuildContext context) {
     return OutlineButton(
       splashColor: Colors.grey,
       onPressed: () {
-        signInWithGoogle().whenComplete(() {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) {
-                return MyHomePage();
-              },
-            ),
-          );
-        });
+        signInWithGoogle().then(
+          (value) {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) {
+                  return MyHomePage();
+                },
+              ),
+            );
+          },
+          onError: (error) {
+            Scaffold.of(context).showSnackBar(
+              SnackBar(
+                content: Text("Sign in failed , try again"),
+                duration: Duration(seconds: 4),
+              ),
+            );
+          },
+        );
       },
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
       highlightElevation: 0,
