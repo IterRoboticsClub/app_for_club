@@ -29,6 +29,7 @@ dependencies:
 
   cloud_firestore: ^0.13.6
 
+
   firebase_auth: ^0.16.1
   google_sign_in: ^4.5.1
   
@@ -41,7 +42,7 @@ dependencies:
   #firebase dependencies
   firebase_core: ^0.4.5
   firebase_analytics: ^5.0.14
-  
+  line_awesome_icons: ^1.0.4+2
   
   
 

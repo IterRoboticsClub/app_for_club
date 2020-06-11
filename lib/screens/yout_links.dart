@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import './Posts.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:line_awesome_icons/line_awesome_icons.dart';
+import 'package:url_launcher/url_launcher.dart';
+import './Posts.dart';
 import './insta_links.dart';
 import './twitt_links.dart';
 import './cool_links.dart';
@@ -11,29 +13,34 @@ class YoutLinks extends StatefulWidget {
 }
 
 class _YoutLinksState extends State<YoutLinks> {
-  List<Posts> Weblinks = [];
+  List<Posts> lists = [];
 
   @override
   void initState() {
-    DatabaseReference ref = FirebaseDatabase.instance.reference();
-    ref.child('webpage').once().then((DataSnapshot snap) {
-      var keys = snap.value.keys;
-      var data = snap.value;
+    DatabaseReference Ref = FirebaseDatabase.instance.reference().child("links");
+    Ref.once().then((DataSnapshot snap) {
+
+      var KEYS = snap.value.keys;
+      var DATA = snap.value;
        //data in JSON
-      Weblinks.clear();
-      for (var key in keys) {
-        Posts p = new Posts(
-            data[key]['image'],
-            data[key]['description'],
-            data[key]['title'],
-            data[key]['date'],
-            data[key]['link'],
-            data[key]['author']);
-        Weblinks.add(p);
+      lists.clear();
+      for (var individualkey in KEYS) {
+        Posts post = new Posts(
+            DATA[individualkey]['image'],
+            DATA[individualkey]['description'],
+            DATA[individualkey]['link'],
+            DATA[individualkey]['date'],
+            DATA[individualkey]['type'],
+            DATA[individualkey]['title'],
+            DATA[individualkey]['author']);
+        
+        if(DATA[individualkey]['type']=="youtube"||DATA[individualkey]['type']=="youtube"){
+        lists.add(post);
+        }
       }
 
       setState(() {
-        print('Length : ${Weblinks.length}');
+        print('Length : ${lists.length}');
       });
     });
   }
@@ -42,22 +49,24 @@ class _YoutLinksState extends State<YoutLinks> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: new Text('Firebase Data'),
+        title: new Text('Cool Links: You-Tube Links'),
+        backgroundColor: Colors.black,
       ),
       body: new Container(
-        child: Weblinks.length == 0
+        child: lists.length == 0
             ? new Text('No Links Available Right Now')
             : new ListView.builder(
-                itemCount: Weblinks.length,
-                itemBuilder: (_, index) //Taking Particular index Values
+                itemCount: lists.length,
+                itemBuilder: (context, index) //Taking Particular index Values
                     {
                   return PostsUI(
-                      Weblinks[index].image,
-                      Weblinks[index].description,
-                      Weblinks[index].link,
-                      Weblinks[index].date,
-                      Weblinks[index].title,
-                      Weblinks[index].author);
+                      lists[index].image,
+                      lists[index].description,
+                      lists[index].link,
+                      lists[index].date,
+                      lists[index].type,
+                     lists[index].title,
+                      lists[index].author);
                 },
               ),
       ),
@@ -70,9 +79,9 @@ class _YoutLinksState extends State<YoutLinks> {
             mainAxisSize: MainAxisSize.max,
             children: <Widget>[
                IconButton(
-                icon: new Icon(Icons.web),
-                iconSize: 25,
-                color: Colors.white,
+
+                icon:  Icon(LineAwesomeIcons.globe, size: 20.0, color: Colors.yellow[700]),
+
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -81,18 +90,14 @@ class _YoutLinksState extends State<YoutLinks> {
                 },
               ),
               IconButton(
-                icon: new Icon(Icons.web),
-                iconSize: 25,
-                color: Colors.white,
+                icon:  Icon(LineAwesomeIcons.youtube, size: 20.0, color: Colors.yellow[700]),
                 onPressed: () {
-                  print('Already On Coollinks page');
+                  print('Already on You-tube links page');
                   
-                }
+                },
               ),
               IconButton(
-                icon: new Icon(Icons.web),
-                iconSize: 25,
-                color: Colors.white,
+                icon:  Icon(LineAwesomeIcons.twitter, size: 20.0, color: Colors.yellow[700]),
                 onPressed: () {
                   Navigator.push(
                     context,
@@ -100,16 +105,14 @@ class _YoutLinksState extends State<YoutLinks> {
                   );
                 },
               ),
-             IconButton(
-                icon: new Icon(Icons.web),
-                iconSize: 25,
-                color: Colors.white,
+              IconButton(
+                icon:  Icon(LineAwesomeIcons.instagram, size: 20.0, color: Colors.yellow[700]),
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => InstaLinks(),
-                    ),
+                    MaterialPageRoute(builder: (context) => InstaLinks()),
                   );
+                  
                 },
               ),
             ],
@@ -119,17 +122,21 @@ class _YoutLinksState extends State<YoutLinks> {
     );
   }
 
-  Widget PostsUI(String image, String description, String link, String date,
+  Widget PostsUI(String image, String description, String link, String date,String type,
       String title, String author) {
-    return new Card(
+    return new GestureDetector(
+      onTap : () => _urlLauncher(link),
+      child: new Card(
       elevation: 10.0,
       margin: EdgeInsets.all(15.0),
       child: new Container(
         padding: new EdgeInsets.all(14.0),
         child: new Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Image.network(image, fit: BoxFit.cover),
+          children: <Widget>
+          [
+            
+            Image.network(image, height:150,fit:BoxFit.fill),
             SizedBox(
               height: 10.0,
             ),
@@ -163,6 +170,22 @@ class _YoutLinksState extends State<YoutLinks> {
           ],
         ),
       ),
+    ),
     );
+  }
+
+  _urlLauncher(String link) async 
+  {
+    if (await canLaunch(link)) 
+    {
+      await launch(link);
+    
+    }
+    else
+    {
+      throw 'Could\'nt  launch  $link';
+    }
+
+
   }
 }
