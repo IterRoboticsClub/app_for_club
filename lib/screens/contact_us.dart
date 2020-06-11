@@ -21,7 +21,7 @@ class ContactUs extends StatelessWidget {
               ),
             ),
             CircleAvatar(
-              backgroundImage: AssetImage('images/shaktijeet_sir.png'),
+              backgroundImage: AssetImage('images/shaktijeet_sir.webp'),
               radius: 60,
             ),
             Row(
@@ -52,7 +52,7 @@ class ContactUs extends StatelessWidget {
               ),
             ),
             CircleAvatar(
-              backgroundImage: AssetImage('images/khitish.png'),
+              backgroundImage: AssetImage('images/khitish.webp'),
               radius: 60,
             ),
             Row(
@@ -67,7 +67,7 @@ class ContactUs extends StatelessWidget {
               ],
             ),
             CircleAvatar(
-              backgroundImage: AssetImage('images/ankit.png'),
+              backgroundImage: AssetImage('images/ankit.webp'),
               radius: 60,
             ),
             Row(
@@ -82,7 +82,7 @@ class ContactUs extends StatelessWidget {
               ],
             ),
             CircleAvatar(
-              backgroundImage: AssetImage('images/binny.png'),
+              backgroundImage: AssetImage('images/binny.webp'),
               radius: 60,
             ),
             Row(
@@ -97,7 +97,7 @@ class ContactUs extends StatelessWidget {
               ],
             ),
             CircleAvatar(
-              backgroundImage: AssetImage('images/tashmin.png'),
+              backgroundImage: AssetImage('images/tashmin.webp'),
               radius: 60,
             ),
             Row(
@@ -112,7 +112,7 @@ class ContactUs extends StatelessWidget {
               ],
             ),
             CircleAvatar(
-              backgroundImage: AssetImage('images/mukund.png'),
+              backgroundImage: AssetImage('images/mukund.webp'),
               radius: 60,
             ),
             Row(
