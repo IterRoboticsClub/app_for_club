@@ -1,7 +1,7 @@
 class Posts
 {
-  String image,description,link,date,type,title,author;
+  String link,type,title;
 
-  Posts(this.image, this.description ,this.link, this.date, this.type, this.title, this.author);
+  Posts(this.link, this.type, this.title );
 }
 

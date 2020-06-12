@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:line_awesome_icons/line_awesome_icons.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter/src/rendering/sliver_multi_box_adaptor.dart';
 import './insta_links.dart';
 import './twitt_links.dart';
 import './yout_links.dart';
@@ -16,6 +17,7 @@ class CoolLinks extends StatefulWidget {
 class _CoolLinksState extends State<CoolLinks> 
 {
   List<Posts> lists = [];
+
 
   @override
   void initState()
@@ -39,13 +41,13 @@ class _CoolLinksState extends State<CoolLinks>
       {
         Posts post = new Posts
         (
-            DATA[individualkey]['image'],
-            DATA[individualkey]['description'],
+            
+           
             DATA[individualkey]['link'],
-            DATA[individualkey]['date'],
+            
             DATA[individualkey]['type'],
             DATA[individualkey]['title'],
-            DATA[individualkey]['author']
+            
 
             );
 
@@ -87,13 +89,12 @@ class _CoolLinksState extends State<CoolLinks>
                 itemBuilder: (context, indexID)
                     {
                   return linkDisplay (
-                      lists[indexID].image,
-                      lists[indexID].description,
+                      
                       lists[indexID].link,
-                      lists[indexID].date,
+                      
                       lists[indexID].type,
                       lists[indexID].title,
-                      lists[indexID].author
+                      
                       );
 
                 },
@@ -152,66 +153,64 @@ class _CoolLinksState extends State<CoolLinks>
     );
   }
 
-  Widget linkDisplay(String image, String description, String link, String date, String type,
-      String title, String author) 
+  Widget linkDisplay( String link,  String type,
+      String title) 
     {
     
     return new GestureDetector(
       onTap : () => _urlLauncher(link),
       child: new Card(
-      elevation: 10.0,
+      elevation: 7.0,
       margin: EdgeInsets.all(15.0),
       child: new Container(
-        padding: new EdgeInsets.all(14.0),
-        child: new Column(
+        padding: new EdgeInsets.all(10.0),
+        child: new Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>
           [
             
-            Image.network(image, height:150,fit:BoxFit.fill),
+             Icon(LineAwesomeIcons.globe,
+                    size: 50.0, color: Colors.green[600]),
             SizedBox(
-              height: 10.0,
+              width: 20.0,
             ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children:<Widget>[
             Text(
               title,
-              style: Theme.of(context).textTheme.title,
-              textAlign: TextAlign.center,
+              overflow: TextOverflow.ellipsis,
+                maxLines: 2,
+              style: TextStyle(fontSize: 18.0,
+              ),
             ),
-            SizedBox(height: 10.0),
-            Text(
-              description,
-              style: Theme.of(context).textTheme.subtitle1,
-              textAlign: TextAlign.center,
+            
+           Text(
+              link,
+              overflow: TextOverflow.ellipsis,
+              maxLines: 3,
+              style: TextStyle(color:Colors.blue[900],
+              
+              fontSize: 13.0,
+              )
             ),
-            SizedBox(height: 10.0),
-            new Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text(
-                  date,
-                  style: Theme.of(context).textTheme.subtitle2,
-                  textAlign: TextAlign.center,
-                ),
-                Text(
-                  author,
-                  style: Theme.of(context).textTheme.subtitle2,
-                  textAlign: TextAlign.center,
-                ),
+            
               ],
-            )
+            ),
           ],
-        ),
+        )
+        
       ),
     ),
     );
   }
 
-  _urlLauncher(String link) async 
+  _urlLauncher(String link) async
   {
-    if (await canLaunch(link)) 
+    if (await canLaunch(link))
     {
       await launch(link);
-    
+
     }
     else
     {
